@@ -1,0 +1,39 @@
+{
+  "rules": {
+    "rooms": {
+      "$roomId": {
+        ".read": "auth != null && $roomId == auth.roomId && auth.canAccessRoom == true",
+        ".write": "auth != null && $roomId == auth.roomId && auth.canUpdateRoom == true"
+      }
+    },
+    "chats": {
+      "$chatId": {
+        ".read": "auth != null && $chatId == auth.chatId && auth.canAccessChat == true",
+
+        "messages": {
+          "$messageId": {
+            ".write": "auth != null && $chatId == auth.chatId && auth.canUpdateChat == true",
+
+            ".validate": "newData.hasChildren(['userId', 'message', 'timestamp', 'username', 'avatar'])",
+
+            "username": {
+              ".validate": "newData.val() === auth.username"
+            },
+            "userId": {
+              ".validate": "newData.val() === auth.userId"
+            },
+            "avatar": {
+              ".validate": "newData.val() === auth.avatar"
+            },
+            "message": {
+              ".validate": "newData.isString()"
+            },
+            "timestamp": {
+              ".validate": "newData.isNumber()"
+            }
+          }
+        }
+      }
+    }
+  }
+}

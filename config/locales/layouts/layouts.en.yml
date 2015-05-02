@@ -1,0 +1,9 @@
+en:
+  layouts:
+    title: "Soundcloud Share"
+    rooms: "Rooms"
+    manage: "Manage"
+    sign_in: "Sign In"
+    sign_out: "Sign Out"
+    project_by: "Project by"
+    powered_by_soundcloud: "Powered by Soundcloud"

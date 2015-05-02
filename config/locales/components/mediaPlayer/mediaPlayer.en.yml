@@ -1,0 +1,7 @@
+en:
+  components:
+    mediaPlayer:
+      unknown: "Unknown"
+      anonymous: "Anonymous"
+      set: "Set"
+      placeholder: "Enter a Soundcloud URL..."

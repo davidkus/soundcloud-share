@@ -1,0 +1,24 @@
+<div class="ui fixed orange inverted main menu">
+<div class="ui page grid">
+<div class="column">
+  <div class="left menu">
+    <%= link_to root_path, class: "item #{link_active "welcome"}" do %>
+      <i class="music icon"></i> <%= t('layouts.title') %>
+    <% end %>
+    <%= link_to rooms_path, class: "item #{link_active "rooms"}" do %>
+      <i class="cubes icon"></i> <%= t('layouts.rooms') %>
+    <% end %>
+  </div>
+  <div class="right menu">
+    <div class="ui pointing dropdown hover link item">
+      <i class="dropdown icon"></i>
+      <span class="text"><%= current_user.username %></span>
+      <div class="menu">
+        <%= link_to t('layouts.manage'), edit_user_registration_path , class: "item" %>
+        <%= link_to t('layouts.sign_out'), destroy_user_session_path, method: :delete, class: "item" %>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>

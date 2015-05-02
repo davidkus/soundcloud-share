@@ -1,0 +1,40 @@
+<h2 class="ui dividing header"><%= room.name %></h2>
+
+<div class="ui blue top right attached label">
+  <div class="ui top right pointing click dropdown">
+    <i class="share icon"></i> <%= t('rooms.share') %>
+    <div class="menu">
+      <div class="header"><%= t('rooms.social_media') %></div>
+      <div class="header">
+        <%= render partial: 'common/facebook_share', locals: { url: room_sharing_url(room, room.share_id), title: room.name } %>
+      </div>
+      <div class="header">
+        <%= render partial: 'common/twitter_share', locals: { url: room_sharing_url(room, room.share_id), title: room.name } %>
+      </div>
+      <div class="header">
+        <%= render partial: 'common/google_plus_share', locals: { url: room_sharing_url(room, room.share_id) } %>
+      </div>
+      <div class="divider"></div>
+      <div class="header"><%= t('rooms.clipboard') %></div>
+      <div class="item"
+           onClick="window.prompt('<%= t('rooms.clipboard_message') %>', '<%= room_sharing_url room, room.share_id %>');">
+        <%= t('rooms.copy_to_clipboard') %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ui two column grid">
+  <div class="column">
+    <%= react_component('MediaPlayer', firebaseUrl: firebase_url, roomId: room.sync_id,
+                        token: @token, canUpdate: policy(room).update?,
+                        clientId: soundcloud_client_id) %>
+  </div>
+  <div class="column">
+    <%= react_component('Chat', firebaseUrl: firebase_url, chatId: room.chat_id,
+                        token: @token, clientId: soundcloud_client_id,
+                        userId: current_or_guest_user.id,
+                        username: current_or_guest_user.username,
+                        avatar: current_or_guest_user.gravatar_url) %>
+  </div>
+</div>

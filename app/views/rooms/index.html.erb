@@ -1,0 +1,62 @@
+<h2 class="ui dividing header"><%= t('rooms.rooms') %></h2>
+
+<div class="ui two column grid">
+<div class="ui column four wide">
+
+<div class="ui vertical pointing menu">
+  <%= link_to rooms_path, class: "#{public_rooms_class current_type} item" do %>
+    <%= t('rooms.public_rooms') %>
+  <% end %>
+  <%= link_to rooms_path(type: :owner), class: "#{my_rooms_class current_type} item" do %>
+    <%= t('rooms.my_rooms') %>
+  <% end %>
+  <%= link_to rooms_path(type: :access), class: "#{shared_rooms_class current_type} item" do %>
+    <%= t('rooms.shared_with_me') %>
+  <% end %>
+  <div class="item">
+    <%= link_to t('rooms.new_room'), new_room_path, class: "ui green button" %>
+  </div>
+</div>
+
+</div>
+
+<div class="ui column twelve wide">
+<div class="ui segment">
+<div class="ui divided list">
+  <% if @rooms.empty? %>
+  <div class="item">
+    <div class="header"><%= t('rooms.no_rooms') %></div>
+  </div>
+  <% end %>
+  <% @rooms.each do |room| %>
+  <div class="item">
+    <div class="left floated content">
+      <%= link_to room do %>
+        <div class="header"><%= room.name %></div>
+      <% end %>
+      <div class="description">
+        <%= room.public ? t('rooms.public_room') : t('rooms.private_room') %>
+      </div>
+    </div>
+    <% if policy(room).update? %>
+    <div class="right floated">
+      <%= link_to [:edit, room] do %>
+        <div class='ui compact blue icon button'>
+          <i class="edit icon"></i>
+        </div>
+      <% end %>
+      <%= link_to room, method: :delete do %>
+        <div class='ui compact red icon button'>
+          <i class="trash icon"></i>
+        </div>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+  <% end %>
+</div>
+</div>
+
+</div>
+
+</div>

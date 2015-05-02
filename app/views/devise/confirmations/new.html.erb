@@ -1,0 +1,19 @@
+<h2><%= t('devise.confirmations.resend_confirmation') %></h2>
+
+<%= form_for(resource, as: resource_name,
+                       url: confirmation_path(resource_name),
+                       html: { method: :post, class: "ui error form segment" }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :email %>
+    <div class="ui left icon input">
+      <%= f.email_field :email, autofocus: true %>
+      <i class="mail icon"></i>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit I18n.t('devise.confirmations.resend_confirmation'), class: "ui submit blue button" %>
+  </div>
+<% end %>

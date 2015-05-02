@@ -1,0 +1,17 @@
+<div class="ui fixed orange inverted main menu">
+<div class="ui page grid">
+<div class="column">
+  <div class="left menu">
+    <%= link_to root_path, class: "item #{link_active "welcome"}" do %>
+      <i class="music icon"></i> <%= t('layouts.title') %>
+    <% end %>
+    <%= link_to rooms_path, class: "item #{link_active "rooms"}" do %>
+      <i class="cubes icon"></i> <%= t('layouts.rooms') %>
+    <% end %>
+  </div>
+  <div class="right menu">
+    <%= link_to t('layouts.sign_in'), new_user_session_path, class: "item" %>
+  </div>
+</div>
+</div>
+</div>

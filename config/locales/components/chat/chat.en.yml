@@ -1,0 +1,5 @@
+en:
+  components:
+    chat:
+      send: "Send"
+      placeholder: "Enter a message..."

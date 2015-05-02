@@ -1,0 +1,59 @@
+.media-player div.volume.progress {
+  width: 200px;
+}
+
+.media-player .media-controls {
+  display: table-cell !important;
+  min-width: 120px;
+}
+
+.media-player .test-comp {
+  display: table-cell !important;
+}
+
+.media-player .transparent {
+  background-color: transparent !important;
+}
+
+.media-player .volume-button {
+  margin-right: 0px !important;
+  cursor: pointer;
+}
+
+.media-player .audio-volume-percent-container {
+  border-top: 1px solid #aaa;
+  border-bottom: 1px solid #aaa;
+  width: 20px;
+  height: 100px;
+  position: relative;
+  cursor: pointer;
+}
+
+.media-player .audio-volume-percent {
+  width: 100%;
+  bottom: 0;
+  top: 50%;
+  background: #666;
+  position: absolute;
+}
+
+.media-player .audio-progress-container {
+  display: table-cell !important;
+  vertical-align: top;
+  height: 36px;
+  border-right: 1px solid #aaaaaa;
+  border-left: 1px solid #aaaaaa;
+  width: 100%;
+}
+
+.media-player .audio-progress {
+  background: #666666;
+  width: 100%;
+  height: 100%;
+}
+
+.media-player .time-display {
+  display: table-cell !important;
+  text-align: center;
+  min-width: 120px;
+}

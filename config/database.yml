@@ -1,0 +1,16 @@
+default: &default
+  adapter: postgresql
+  host: localhost
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: soundcloud_share_dev
+
+test:
+  <<: *default
+  database: soundcloud_share_test
+
+production:
+  url: <%= ENV['DATABASE_URL'] %>

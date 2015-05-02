@@ -1,0 +1,28 @@
+<%= form_for room, html: { class: "ui error form segment" } do |f| %>
+
+  <%= error_messages room %>
+
+  <div class="required field">
+    <%= f.label :name %>
+    <%= f.text_field :name, autofocus: true, autocomplete: "off" %>
+  </div>
+
+  <h5 class="ui header"><%= t('rooms.sharing') %></h5>
+  <div class="field inline">
+    <div class="ui toggle checkbox">
+      <label><%= t('rooms.public_access') %></label>
+      <%= f.radio_button :public, :true %>
+    </div>
+  </div>
+
+  <div class="field inline">
+    <div class="ui toggle checkbox">
+      <label><%= t('rooms.enable_share_link') %></label>
+      <%= f.radio_button :share_link, :true %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit class: "ui blue button"%>
+  </div>
+<% end %>

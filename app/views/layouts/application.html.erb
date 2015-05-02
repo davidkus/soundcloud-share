@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Soundcloud Share</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<% if signed_in? %>
+  <%= render "layouts/menu" %>
+<% else %>
+  <%= render 'layouts/guest_menu' %>
+<% end %>
+
+<div class="ui page grid">
+  <div class="column">
+    <%= semantic_flash %>
+    <div id="main-content-segment" class="ui top attached segment">
+      <%= yield %>
+    </div>
+    <div id="footer-segment" class="ui bottom attached segment">
+      <%= t('layouts.project_by') %>
+      <a href="https://github.com/davidkus">
+        <i class="github icon"></i>David Kus
+      </a>
+      <a href="https://soundcloud.com" target="_blank">
+        <%= image_tag 'powered-by-soundcloud.png', class: "ui tiny right floated image", alt: t('layouts.powered_by_soundcloud') %>
+      </a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+en:
+  common:
+    facebook: "Facebook"
+    twitter: "Twitter"
+    google_plus: "Google Plus"
+    back: "Back"
+    show: "Show"
+    unauthorized_message: "You are not authorized to perform this action."

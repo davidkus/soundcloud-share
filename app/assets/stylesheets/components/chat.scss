@@ -1,0 +1,9 @@
+div.chat {
+  overflow: hidden;
+}
+
+div.chat div.comments {
+  overflow-y: scroll;
+  height: 300px;
+  max-height: 300px;
+}
