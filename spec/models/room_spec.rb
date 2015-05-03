@@ -18,6 +18,18 @@ RSpec.describe Room, type: :model do
 
       it { is_expected.not_to be_valid }
     end
+
+    context 'when the room name is an empty string' do
+      let(:name) { "" }
+
+      it { is_expected.not_to be_valid }
+    end
+
+    context 'when the room name is a string of whitespace' do
+      let(:name) { "  " }
+
+      it { is_expected.not_to be_valid }
+    end
   end
 
   describe '#destroy' do
