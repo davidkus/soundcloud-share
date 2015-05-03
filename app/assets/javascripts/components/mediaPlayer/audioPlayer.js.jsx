@@ -1,5 +1,5 @@
 /** @jsx React.DOM */
-var AudioPlayer = React.createClass({
+module.exports = React.createClass({
 
   audioPlayer: function() {
     return this.refs.audioObject.getDOMNode();

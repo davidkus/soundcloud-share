@@ -22,4 +22,5 @@
 //= require react
 //= require react_ujs
 //= require moment
-//= require_tree .
+//= require components/components
+//= require_tree ./scripts

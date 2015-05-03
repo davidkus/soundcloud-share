@@ -1,5 +1,13 @@
 /** @jsx React.DOM */
-var MediaPlayer = React.createClass({
+var VolumeControl = require('./volumeControl');
+var AudioPlayer = require('./audioPlayer');
+var MediaControls = require('./mediaControls');
+var SeekControl = require('./seekControl');
+var TimeDisplay = require('./timeDisplay');
+var TrackTitle = require('./trackTitle');
+var UrlInput = require('./urlInput');
+
+module.exports = React.createClass({
   mixins: [ReactFireMixin],
 
   getInitialState: function() {

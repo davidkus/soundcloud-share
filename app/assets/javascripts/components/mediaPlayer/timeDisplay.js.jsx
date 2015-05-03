@@ -1,5 +1,5 @@
 /** @jsx React.DOM */
-var TimeDisplay = React.createClass({
+module.exports = React.createClass({
 
   formatDuration: function(duration) {
     var seconds = duration.seconds();

@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   validates :username, presence: true, uniqueness: true
 
   # Callbacks
-  before_save :guest_user_values
+  before_save :guest_user_values, if: :guest
 
   def gravatar_url
     hash = Digest::MD5.hexdigest(email)
@@ -19,8 +19,6 @@ class User < ActiveRecord::Base
   private
 
   def guest_user_values
-    if self.guest
-      self.username ||= "guest_#{Time.now.to_i}#{rand(10000)}"
-    end
+    self.username ||= "guest_#{Time.now.to_i}#{rand(10000)}"
   end
 end

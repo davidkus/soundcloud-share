@@ -1,5 +1,7 @@
 /** @jsx React.DOM */
-var MessageList = React.createClass({
+var Message = require('./message');
+
+module.exports = React.createClass({
 
   componentDidMount: function() {
     this.scrollToBottom();

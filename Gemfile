@@ -32,6 +32,8 @@ gem 'firebase_token_generator', '~> 2.0.0'
 
 gem 'firebase', '~> 0.2.3'
 
+gem 'browserify-rails', '~> 0.9.1'
+
 # User pundit for authorization
 gem 'pundit', '~> 1.0.0'
 

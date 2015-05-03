@@ -1,5 +1,5 @@
 /** @jsx React.DOM */
-var MediaControls = React.createClass({
+module.exports = React.createClass({
 
   render: function() {
     var iconClass = this.props.playing ? "pause icon" : "play icon";

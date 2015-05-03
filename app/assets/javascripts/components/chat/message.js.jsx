@@ -1,5 +1,5 @@
 /** @jsx React.DOM */
-var Message = React.createClass({
+module.exports = React.createClass({
 
   render: function() {
     return (

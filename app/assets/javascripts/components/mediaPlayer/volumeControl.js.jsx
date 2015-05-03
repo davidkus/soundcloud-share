@@ -1,5 +1,5 @@
 /** @jsx React.DOM */
-var VolumeControl = React.createClass({
+module.exports = React.createClass({
 
   getInitialState: function() {
     return {

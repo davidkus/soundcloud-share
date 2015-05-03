@@ -1,5 +1,8 @@
 /** @jsx React.DOM */
-var Chat = React.createClass({
+var ChatInput = require('./input');
+var MessageList = require('./messageList');
+
+module.exports = React.createClass({
   mixins: [ReactFireMixin],
 
   getInitialState: function() {

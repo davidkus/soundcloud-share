@@ -1,5 +1,5 @@
 /** @jsx React.DOM */
-var ChatInput = React.createClass({
+module.exports = React.createClass({
 
   getInitialState: function() {
     return {

@@ -1,5 +1,5 @@
 /** @jsx React.DOM */
-var SeekControl = React.createClass({
+module.exports = React.createClass({
 
   seekTo: function(e){
     var container = $(this.refs.progressBar.getDOMNode());

@@ -1,5 +1,5 @@
 /** @jsx React.DOM */
-var TrackTitle = React.createClass({
+module.exports = React.createClass({
 
   getFormattedTrackName: function(track) {
     var trackName = "";
