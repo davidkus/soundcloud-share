@@ -30,12 +30,15 @@ module.exports = React.createClass({
   render: function() {
     return (
       <div className="ui fluid action input">
+
         <input placeholder={ I18n.t('components.chat.placeholder') } type="text"
                onChange={ this.onChange } value={ this.state.text }
                autofocus="true" onKeyPress={ this.onKeyPress } />
+
         <div className="ui blue button" onClick={ this.onClick }>
           { I18n.t('components.chat.send') }
         </div>
+
       </div>
     );
   }

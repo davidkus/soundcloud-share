@@ -1,6 +1,7 @@
 /** @jsx React.DOM */
 var ChatInput = require('./input');
 var MessageList = require('./messageList');
+var ClassNames = require('classnames');
 
 module.exports = React.createClass({
   mixins: [ReactFireMixin],
@@ -30,6 +31,10 @@ module.exports = React.createClass({
     this.bindAsArray(this.firebaseRef.limitToLast(100), "messages");
   },
 
+  /*
+   * Submits the given message to the Firebase server using the user information
+   * (userId, username, etc.) provided in this.props
+   */
   submitMessage: function(message) {
     var date = new Date();
     this.firebaseRef.push({
@@ -43,7 +48,10 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    containerClass = this.state.loading ? "ui chat raised loading segment" : "ui chat raised segment"
+    var containerClass = ClassNames(
+      'ui chat raised segment',
+      { 'loading': this.state.loading }
+    );
 
     return (
       <div className={ containerClass }>
