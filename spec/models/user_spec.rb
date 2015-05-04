@@ -23,20 +23,22 @@ RSpec.describe User, type: :model do
 
   describe '#guest_user_values' do
 
-    subject(:user) { build(:user, username: nil, guest: guest_user?) }
+    subject(:user) { build(:user, username: username, guest: guest_user?) }
 
     before { user.save(validate: false) }
 
     context 'when creating a guest user' do
       let(:guest_user?) { true }
+      let(:username) { nil }
 
       its(:username) { is_expected.not_to be_nil }
     end
 
     context 'when creating a regular user' do
       let(:guest_user?) { false }
+      let(:username) { "example.username" }
 
-      its(:username) { is_expected.to be_nil }
+      its(:username) { is_expected.to eq username }
     end
   end
 end
