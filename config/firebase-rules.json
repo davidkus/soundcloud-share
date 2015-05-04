@@ -29,7 +29,7 @@
               ".validate": "newData.isString()"
             },
             "timestamp": {
-              ".validate": "newData.isNumber()"
+              ".validate": "newData.isNumber() && newData.val() >= now - 5000 && newData.val() <= now + 5000"
             }
           }
         }
