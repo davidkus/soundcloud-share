@@ -7,10 +7,6 @@
   min-width: 120px;
 }
 
-.media-player .test-comp {
-  display: table-cell !important;
-}
-
 .media-player .transparent {
   background-color: transparent !important;
 }
@@ -56,4 +52,11 @@
   display: table-cell !important;
   text-align: center;
   min-width: 120px;
+}
+
+.media-player .title-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: 20px;
 }

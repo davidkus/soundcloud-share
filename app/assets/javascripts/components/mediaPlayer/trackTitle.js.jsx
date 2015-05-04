@@ -1,7 +1,12 @@
 /** @jsx React.DOM */
 module.exports = React.createClass({
 
-  getFormattedTrackName: function(track) {
+  componentDidMount: function() {
+    $(this.refs.title.getDOMNode()).popup();
+  },
+
+  getFormattedTrackName: function() {
+    var track = this.props.track;
     var trackName = "";
 
     trackName += (track && track.title) ? track.title : I18n.t('components.mediaPlayer.unknown');
@@ -11,19 +16,21 @@ module.exports = React.createClass({
     return trackName;
   },
 
-  getPermalink: function(track) {
+  getPermalink: function() {
+    var track = this.props.track;
+
     return (track && track.permalink_url) ? track.permalink_url : "#"
   },
 
   render: function() {
     return (
       <div className="ui header">
-        <a href={ this.getPermalink(this.props.track) } target="_blank">
-          <i className="soundcloud icon"></i>
-        </a>
-        <span className="title-text">
-          { this.getFormattedTrackName(this.props.track) }
-        </span>
+        <div ref="title" className="title-text" data-content={ this.getFormattedTrackName() }>
+          <a href={ this.getPermalink() } target="_blank">
+            <i className="soundcloud icon"></i>
+          </a>
+          { this.getFormattedTrackName() }
+        </div>
       </div>
     );
   }
