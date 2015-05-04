@@ -1,8 +1,14 @@
 /** @jsx React.DOM */
+var ClassNames = require('classnames');
+
 module.exports = React.createClass({
 
   render: function() {
-    var iconClass = this.props.playing ? "pause icon" : "play icon";
+    var iconClass = ClassNames({
+      'pause': this.props.playing,
+      'play': !this.props.playing,
+      'icon': true
+    });
 
     return (
       <div className="ui icon buttons media-controls">

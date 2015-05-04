@@ -6,6 +6,7 @@ var SeekControl = require('./seekControl');
 var TimeDisplay = require('./timeDisplay');
 var TrackTitle = require('./trackTitle');
 var UrlInput = require('./urlInput');
+var ClassNames = require('classnames');
 
 module.exports = React.createClass({
   mixins: [ReactFireMixin],
@@ -183,7 +184,10 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var containerClass = this.state.loading ? "ui media-player raised loading segment" : "ui media-player raised segment"
+    var containerClass = ClassNames(
+      'ui media-player raised segment',
+      { 'loading': this.state.loading }
+    );
 
     var mediaControls = "";
 

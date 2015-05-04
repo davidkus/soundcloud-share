@@ -1,4 +1,6 @@
 /** @jsx React.DOM */
+var ClassNames = require('classnames');
+
 module.exports = React.createClass({
 
   getInitialState: function() {
@@ -50,7 +52,12 @@ module.exports = React.createClass({
     var percent = this.props.volume * 100;
     var style = {top: (100 - percent) + "%"};
 
-    var iconClass = this.props.volume == 0 ? "circular volume off icon volume-button" : "circular volume up icon volume-button";
+    var iconClass = ClassNames(
+      'circular',
+      { 'volume off': this.props.volume == 0 },
+      { 'volume up': this.props.volume != 0 },
+      'icon volume-button'
+    );
 
     return (
       <span className="ui top right attached icon transparent label">
