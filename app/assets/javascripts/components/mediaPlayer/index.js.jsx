@@ -7,9 +7,10 @@ var TimeDisplay = require('./timeDisplay');
 var TrackTitle = require('./trackTitle');
 var UrlInput = require('./urlInput');
 var ClassNames = require('classnames');
+var AudioSyncMixin = require('./mixins/audioSync');
 
 module.exports = React.createClass({
-  mixins: [ReactFireMixin],
+  mixins: [ReactFireMixin, AudioSyncMixin],
 
   getInitialState: function() {
     return {
@@ -20,6 +21,7 @@ module.exports = React.createClass({
         currentTrack: 0
       },
       loading: true,
+      currentTime: 0,
       volume: 0.5
     };
   },
@@ -37,6 +39,16 @@ module.exports = React.createClass({
 
     this.firebaseRef.once("value", function(snapshot) {
       this.setState({ loading: false });
+    }.bind(this));
+
+    this.firebaseRef.on("value", function(snapshot) {
+      var currentTime = snapshot.val().currentTime;
+
+      if (this.checkTimeDifference(this.state.currentTime, currentTime)) {
+        this.setState({
+          currentTime: currentTime
+        });
+      }
     }.bind(this));
 
     this.bindAsObject(this.firebaseRef, "room");
@@ -134,11 +146,21 @@ module.exports = React.createClass({
   },
 
   updateCurrentTime: function(currentTime) {
-    if (this.props.canUpdate) {
-      this.firebaseRef.update({
-        currentTime: currentTime
-      });
+    this.setState({
+      currentTime: currentTime
+    });
+
+    if (!this.props.canUpdate) {
+      return;
     }
+
+    if (Math.floor(currentTime) == Math.floor(this.state.room.currentTime)) {
+      return;
+    }
+
+    this.firebaseRef.update({
+      currentTime: currentTime
+    });
   },
 
   getIsPlaying: function() {
@@ -175,14 +197,6 @@ module.exports = React.createClass({
     }
   },
 
-  getCurrentTime: function() {
-    if (this.state.room && this.state.room.currentTime) {
-      return this.state.room.currentTime;
-    } else {
-      return 0;
-    }
-  },
-
   render: function() {
     var containerClass = ClassNames(
       'ui media-player raised segment',
@@ -212,8 +226,8 @@ module.exports = React.createClass({
           <SeekControl canUpdate={ this.props.canUpdate }
                        seekTo={ this.seekTo }
                        duration={ this.getCurrentTrack() ? this.getCurrentTrack().duration / 1000 : 0 }
-                       currentTime={ this.getCurrentTime() } />
-          <TimeDisplay currentTime={ this.getCurrentTime() * 1000 }
+                       currentTime={ this.state.currentTime } />
+          <TimeDisplay currentTime={ this.state.currentTime * 1000 }
                        duration={ this.getCurrentTrack() ? this.getCurrentTrack().duration : 0 } />
         </div>
 
@@ -224,7 +238,7 @@ module.exports = React.createClass({
         <AudioPlayer track={ this.getCurrentTrack() }
                      currentTrackIndex={ this.getCurrentTrackIndex() }
                      playing={ this.getIsPlaying() }
-                     currentTime={ this.getCurrentTime() }
+                     currentTime={ this.state.currentTime }
                      clientId={ this.props.clientId }
                      volume={ this.state.volume }
                      onTimeUpdate={ this.updateCurrentTime }

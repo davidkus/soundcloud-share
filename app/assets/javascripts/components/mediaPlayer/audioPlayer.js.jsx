@@ -1,5 +1,8 @@
 /** @jsx React.DOM */
+var AudioSyncMixin = require('./mixins/audioSync');
+
 module.exports = React.createClass({
+  mixins: [AudioSyncMixin],
 
   audioPlayer: function() {
     return this.refs.audioObject.getDOMNode();
@@ -38,9 +41,7 @@ module.exports = React.createClass({
   },
 
   syncTime: function() {
-    var timeDifference = Math.abs(this.audioPlayer().currentTime - this.props.currentTime);
-
-    if (timeDifference > 2) {
+    if (this.checkTimeDifference(this.audioPlayer().currentTime, this.props.currentTime)) {
       this.audioPlayer().currentTime = this.props.currentTime;
     }
   },
