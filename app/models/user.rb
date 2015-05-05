@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
 
   def gravatar_url
     hash = Digest::MD5.hexdigest(email)
-    image_src = "http://www.gravatar.com/avatar/#{hash}"
+    image_src = "http://www.gravatar.com/avatar/#{hash}?d=identicon"
   end
 
   private
