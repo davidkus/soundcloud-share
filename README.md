@@ -4,8 +4,6 @@ Listen to Soundcloud tracks & playlists with your friends!
 
 ## TODO
 
- - List of people in the current room (react + firebase)
- - Force chat timestamp to be within certain range (firebase)
  - Better homepage (showing most shared public rooms?)
  - Advanced sharing (share with specific users)
  - Clean up guest users

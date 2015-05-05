@@ -6,6 +6,27 @@
         ".write": "auth != null && $roomId == auth.roomId && auth.canUpdateRoom == true"
       }
     },
+    "presence": {
+      "$roomId": {
+        ".read": "auth != null && $roomId == auth.roomId && auth.canAccessRoom == true",
+
+        "$userId": {
+          ".write": "auth != null && $userId == '' + auth.userId && auth.canAccessRoom == true",
+
+          ".validate": "newData.hasChildren(['username', 'avatar', 'connectedOn'])",
+
+          "username": {
+            ".validate": "newData.val() === auth.username"
+          },
+          "avatar": {
+            ".validate": "newData.val() === auth.avatar"
+          },
+          "connectedOn": {
+            ".validate": "newData.isNumber() && newData.val() >= now - 5000 && newData.val() <= now + 5000"
+          }
+        }
+      }
+    },
     "chats": {
       "$chatId": {
         ".read": "auth != null && $chatId == auth.chatId && auth.canAccessChat == true",
@@ -29,7 +50,7 @@
               ".validate": "newData.isString()"
             },
             "timestamp": {
-              ".validate": "newData.isNumber()"
+              ".validate": "newData.isNumber() && newData.val() >= now - 5000 && newData.val() <= now + 5000"
             }
           }
         }
