@@ -1,6 +1,6 @@
 {
   "name": "soundcloud-share",
-  "devDependencies" : {
+  "dependencies" : {
     "browserify": "~9.0.8",
     "browserify-incremental": "^3.0.0",
     "reactify": "^1.1.0",
