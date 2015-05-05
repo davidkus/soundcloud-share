@@ -7,8 +7,16 @@ $(document).ready(function() {
 
   // Messages
   $('.message .close').on('click', function() {
-    $(this).closest('.message').fadeOut();
+    $(this).closest('.message').fadeOut(function() {
+      $(this).remove();
+    });
   });
+
+  setTimeout(function() {
+    $('.message .close').closest('.message').fadeOut(function() {
+      $(this).remove();
+    });
+  }, 5000);
 
   // Checkboxes
   $('.ui.checkbox').checkbox();
