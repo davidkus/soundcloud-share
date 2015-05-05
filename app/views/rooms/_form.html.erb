@@ -10,15 +10,15 @@
   <h5 class="ui header"><%= t('rooms.sharing') %></h5>
   <div class="field inline">
     <div class="ui toggle checkbox">
+      <%= f.check_box :public %>
       <label><%= t('rooms.public_access') %></label>
-      <%= f.radio_button :public, :true %>
     </div>
   </div>
 
   <div class="field inline">
     <div class="ui toggle checkbox">
+      <%= f.check_box :share_link %>
       <label><%= t('rooms.enable_share_link') %></label>
-      <%= f.radio_button :share_link, :true %>
     </div>
   </div>
 
