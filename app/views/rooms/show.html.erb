@@ -38,3 +38,10 @@
                         avatar: current_or_guest_user.gravatar_url) %>
   </div>
 </div>
+
+<br />
+
+<%= react_component('PresenceComponent', firebaseUrl: firebase_url, roomId: room.sync_id,
+                    token: @token, userId: current_or_guest_user.id,
+                    username: current_or_guest_user.username,
+                    avatar: current_or_guest_user.gravatar_url) %>
