@@ -2,7 +2,9 @@
 module.exports = React.createClass({
 
   componentDidMount: function() {
-    $(this.refs.title.getDOMNode()).popup();
+    $(this.refs.title.getDOMNode()).popup({
+      popup: $(this.refs.popup.getDOMNode())
+    });
   },
 
   getFormattedTrackName: function() {
@@ -25,10 +27,13 @@ module.exports = React.createClass({
   render: function() {
     return (
       <div className="ui header">
-        <div ref="title" className="title-text" data-content={ this.getFormattedTrackName() }>
+        <div ref="title" className="title-text">
           <a href={ this.getPermalink() } target="_blank">
             <i className="soundcloud icon"></i>
           </a>
+          { this.getFormattedTrackName() }
+        </div>
+        <div ref="popup" className="ui popup">
           { this.getFormattedTrackName() }
         </div>
       </div>
