@@ -2,6 +2,10 @@
 
 Listen to Soundcloud tracks & playlists with your friends!
 
+Built with Rails, React and Firebase.
+
+Demo hosted on Heroku at [soundcloud-demo.kus.dk](http://soundcloud-demo.kus.dk)
+
 ## TODO
 
  - Better homepage (showing most shared public rooms?)
