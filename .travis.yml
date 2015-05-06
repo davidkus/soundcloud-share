@@ -2,6 +2,8 @@ language: ruby
 script: bundle exec rake spec
 rvm:
 - 2.2.1
+before_install:
+  - npm install
 before_script:
   - psql -c 'create database soundcloud_share_test;' -U postgres
 addons:
