@@ -27,7 +27,17 @@ module.exports = React.createClass({
   },
 
   componentWillMount: function() {
+    var amOnline = new Firebase(this.props.firebaseUrl + '/.info/connected');
+
     this.firebaseRef = new Firebase(this.props.firebaseUrl + "/rooms/" + this.props.roomId);
+
+    amOnline.on('value', function(snapshot) {
+      if (snapshot.val() == true && this.props.canUpdate) {
+        this.firebaseRef.onDisconnect().update({
+          playing: false
+        });
+      }
+    }.bind(this));
 
     this.firebaseRef.authWithCustomToken(this.props.token, function(error, authData) {
       if (error) {
@@ -55,9 +65,11 @@ module.exports = React.createClass({
   },
 
   componentWillUnmount: function() {
-    this.firebaseRef.update({
-      playing: false
-    });
+    if (this.props.canUpdate) {
+      this.firebaseRef.update({
+        playing: false
+      });
+    }
 
     this.firebaseRef.off()
   },
