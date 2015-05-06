@@ -1,4 +1,4 @@
-# Soundcloud Share
+# Soundcloud Share [![Build Status](https://travis-ci.org/davidkus/soundcloud-share.svg?branch=improved-audio-sync)](https://travis-ci.org/davidkus/soundcloud-share)
 
 Listen to Soundcloud tracks & playlists with your friends!
 
