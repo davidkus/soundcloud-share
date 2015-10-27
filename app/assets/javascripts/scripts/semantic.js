@@ -24,4 +24,7 @@ $(document).ready(function() {
   // Progress Bars
   $('.progress').progress();
 
+  // Popups
+  $('.popup').popup();
+
 });

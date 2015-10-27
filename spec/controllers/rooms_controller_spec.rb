@@ -14,6 +14,7 @@ RSpec.describe RoomsController, type: :controller do
 
     let(:action) { get :index, type: room_type }
 
+    let(:owner) { create(:user) }
     let(:public_room) { create(:room, public: true) }
     let(:owner_room) { create(:room) }
     let(:access_room) { create(:room) }
@@ -23,6 +24,8 @@ RSpec.describe RoomsController, type: :controller do
     before { public_room }
     before { user.add_role :owner, owner_room }
     before { user.add_role :access, access_room }
+    before { owner.add_role :owner, public_room }
+    before { owner.add_role :owner, access_room }
 
     before { action }
 
