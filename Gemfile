@@ -27,7 +27,7 @@ gem 'thin', '~> 1.6.3'
 gem 'devise', '~> 3.5.2'
 gem 'devise-guests', github: 'davidkus/devise-guests', branch: 'master'
 
-gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass', branch: 'v1.0beta'
+gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 
 gem 'react-rails', '~> 1.4.0'
 
