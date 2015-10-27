@@ -2,9 +2,12 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.0'
+gem 'rails', '4.2.4'
 
-gem 'pg', '~> 0.18.1'
+# Use rolify for roles
+gem 'rolify', '~> 4.1.1'
+
+gem 'pg', '~> 0.18.3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -21,12 +24,12 @@ gem "i18n-js", ">= 3.0.0.rc8"
 gem 'thin', '~> 1.6.3'
 
 # Use devise for authentication
-gem 'devise', '~> 3.4.1'
+gem 'devise', '~> 3.5.2'
 gem 'devise-guests', github: 'davidkus/devise-guests', branch: 'master'
 
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass', branch: 'v1.0beta'
 
-gem 'react-rails', '~> 1.0.0.pre', github: 'reactjs/react-rails'
+gem 'react-rails', '~> 1.4.0'
 
 gem 'firebase_token_generator', '~> 2.0.0'
 
@@ -35,12 +38,9 @@ gem 'firebase', '~> 0.2.3'
 gem 'browserify-rails', '~> 0.9.1'
 
 # User pundit for authorization
-gem 'pundit', '~> 1.0.0'
+gem 'pundit', '~> 1.0.1'
 
 gem 'decent_exposure', '~> 2.3.2'
-
-# Use rolify for roles
-gem 'rolify', '~> 4.0.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -55,7 +55,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   gem 'byebug'
 
-  gem 'rspec-rails', '~> 3.2.1'
+  gem 'rspec-rails', '~> 3.3.3'
 
   gem 'rspec-its', '~> 1.2.0', require: false
 
