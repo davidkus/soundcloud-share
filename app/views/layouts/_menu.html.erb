@@ -10,6 +10,9 @@
     <% end %>
   </div>
   <div class="right menu">
+    <%= link_to help_path, class: "item #{link_active "help"}" do %>
+      <i class="help icon"></i>
+    <% end %>
     <div class="ui pointing dropdown hover link item">
       <i class="dropdown icon"></i>
       <span class="text"><%= current_user.username %></span>

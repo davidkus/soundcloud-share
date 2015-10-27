@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
+  get '/help', to: 'help#index'
+
   resources :rooms do
     resources :sharing, only: [:show]
   end
