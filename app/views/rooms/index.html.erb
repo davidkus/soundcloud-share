@@ -21,6 +21,9 @@
 <div class="ui three cards">
   <% @rooms.each do |room| %>
   <div class="ui card">
+    <canvas class="image" width="200" height="200" data-jdenticon-hash="<%= room.identicon_hash %>">
+      Fallback text for browsers not supporting canvas
+    </canvas>
     <div class="content">
       <%= link_to room, class: "header" do %>
         <%= room.name %>

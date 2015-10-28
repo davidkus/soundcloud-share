@@ -19,6 +19,7 @@
 //= require firebase-2.2.4.min
 //= require reactfire-0.4.0.min
 //= require soundcloud-sdk.min
+//= require jdenticon-1.3.2.min
 //= require react
 //= require react_ujs
 //= require moment

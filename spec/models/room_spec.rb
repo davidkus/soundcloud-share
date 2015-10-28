@@ -69,4 +69,13 @@ RSpec.describe Room, type: :model do
       it { is_expected.to contain_exactly owner }
     end
   end
+
+  describe '#identicon_hash' do
+    let(:owner) { create(:user) }
+    let(:room) { create(:room) }
+
+    subject(:identicon_hash) { room.identicon_hash }
+
+    it { is_expected.to eq Digest::MD5.hexdigest("#{room.id} - #{room.name}") }
+  end
 end

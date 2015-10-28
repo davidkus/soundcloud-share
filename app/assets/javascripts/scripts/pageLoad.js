@@ -4,4 +4,5 @@ $(document).on('page:fetch', function() {
 
 $(document).on('page:change', function() {
   $("#main-content-segment").removeClass("loading");
+  jdenticon();
 });

@@ -12,6 +12,10 @@ class Room < ActiveRecord::Base
     User.with_role :owner, self
   end
 
+  def identicon_hash
+    Digest::MD5.hexdigest("#{id} - #{name}")
+  end
+
   private
 
   def delete_firebase_entries
