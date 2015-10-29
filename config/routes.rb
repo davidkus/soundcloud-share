@@ -3,8 +3,6 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
-  get '/help', to: 'help#index'
-
   get '/s(/:code)', to: 'access#grant_access', as: 'share'
 
   resources :rooms do
