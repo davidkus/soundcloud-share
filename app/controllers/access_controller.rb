@@ -10,6 +10,7 @@ class AccessController < ApplicationController
 
     respond_to do |format|
       if !sharing_code
+        flash[:alert] = I18n.t 'sharing.invalid_link'
         format.html { redirect_to root_path }
         format.json { render json: "", status: :not_found }
       elsif current_or_guest_user.has_role? :access, room

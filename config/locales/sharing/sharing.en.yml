@@ -1,6 +1,6 @@
 en:
   sharing:
-    inavlid_link: "The code you have entered is not valid."
+    invalid_link: "The code you have entered is not valid."
     successfully_created: "Sharing code successfully created."
     create_button: "Create"
     new_sharing_code: "New Code"
