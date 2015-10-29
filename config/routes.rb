@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   get '/help', to: 'help#index'
 
-  get '/s/:code', to: 'access#grant_access', as: 'share'
+  get '/s(/:code)', to: 'access#grant_access', as: 'share'
 
   resources :rooms do
     resources :sharing_codes, only: [:index, :new, :show, :create, :destroy]

@@ -1,1 +1,23 @@
-Welcome!
+<h2 class="ui center aligned icon header">
+  <i class="circular music icon"></i>
+  <%= t('welcome.title') %>
+  <div class="sub header"><%= t('welcome.description') %></div>
+</h2>
+<div class="ui center aligned basic segment">
+  <%= form_tag share_path, class: 'ui form', method: 'GET', id: 'join-form' do %>
+    <div class="inline field">
+    <div class="ui left icon action input">
+      <i class="cube icon"></i>
+      <%= text_field_tag :code, nil, placeholder: "Room Code" %>
+      <div class="ui blue submit button" onclick="$('#join-form').submit();"><%= t('welcome.join') %></div>
+    </div>
+    </div>
+  <% end %>
+  <div class="ui horizontal divider">
+    <%= t('welcome.or') %>
+  </div>
+  <%= link_to new_room_path, class: "ui orange labeled icon button" do %>
+    <%= t('welcome.create') %>
+    <i class="add icon"></i>
+  <% end %>
+</div>

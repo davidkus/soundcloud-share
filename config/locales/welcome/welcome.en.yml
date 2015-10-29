@@ -1,3 +1,7 @@
 en:
   welcome:
-    message: "Welcome"
+    title: "Soundcloud Share"
+    description: "Listen with your Friends!"
+    join: "Join"
+    or: "Or"
+    create: "Create New Room"
