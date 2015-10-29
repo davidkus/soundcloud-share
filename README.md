@@ -8,9 +8,9 @@ Demo hosted on Heroku at [soundcloud-demo.kus.dk](http://soundcloud-demo.kus.dk)
 
 ## TODO
 
- - Better homepage (showing most shared public rooms?)
- - Advanced sharing (share with specific users)
- - Clean up guest users
- - Name Generator / Images for guest users (generated when the user is created)
- - Error handling if the owner disconnects
- - Look into writing unit tests for react components
+ - Add a list of public rooms to the homepage.
+ - Add a way for owners of rooms to remove access for specific users. 
+ - Clean up guest users and expired sharing codes.
+ - Add a name generator for guest users that generates readable names.
+ - Better error handling when the owner of a room disconnects.
+ - Better testing of react components.
