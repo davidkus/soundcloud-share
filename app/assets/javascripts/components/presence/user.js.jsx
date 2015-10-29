@@ -3,7 +3,7 @@ module.exports = React.createClass({
 
   componentDidMount: function() {
     this.timer = setInterval(function() {
-      this.refs.connectedOn.getDOMNode().firstChild.data = moment(this.props.user.connectedOn).fromNow();
+      ReactDOM.findDOMNode(this.refs.connectedOn).firstChild.data = moment(this.props.user.connectedOn).fromNow();
     }.bind(this), 1000);
   },
 

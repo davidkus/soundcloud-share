@@ -2,8 +2,8 @@
 module.exports = React.createClass({
 
   componentDidMount: function() {
-    $(this.refs.title.getDOMNode()).popup({
-      popup: $(this.refs.popup.getDOMNode())
+    $(ReactDOM.findDOMNode(this.refs.title)).popup({
+      popup: $(ReactDOM.findDOMNode(this.refs.popup))
     });
   },
 

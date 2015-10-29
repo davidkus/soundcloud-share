@@ -10,7 +10,7 @@ module.exports = React.createClass({
   },
 
   componentDidMount: function() {
-    $(this.refs.volumeButton.getDOMNode()).popup({
+    $(ReactDOM.findDOMNode(this.refs.volumeButton)).popup({
       inline   : true,
       hoverable: true,
       position : 'bottom center',
@@ -22,7 +22,7 @@ module.exports = React.createClass({
   },
 
   adjustVolumeTo: function(e) {
-    var container = $(this.refs.audioVolumePercentContainer.getDOMNode());
+    var container = $(ReactDOM.findDOMNode(this.refs.audioVolumePercentContainer));
     var containerStartY = container.offset().top;
     var percent = (e.clientY - containerStartY) / container.height();
     percent = 1 - percent;

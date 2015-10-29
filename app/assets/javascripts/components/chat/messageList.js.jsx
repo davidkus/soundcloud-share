@@ -15,8 +15,8 @@ module.exports = React.createClass({
    * Scrolls to the bottom of the chat message list
    */
   scrollToBottom: function() {
-    $(this.refs.messageList.getDOMNode()).stop().animate({
-      scrollTop: $(this.refs.messageList.getDOMNode())[0].scrollHeight
+    $(ReactDOM.findDOMNode(this.refs.messageList)).stop().animate({
+      scrollTop: $(ReactDOM.findDOMNode(this.refs.messageList))[0].scrollHeight
     }, 800);
   },
 

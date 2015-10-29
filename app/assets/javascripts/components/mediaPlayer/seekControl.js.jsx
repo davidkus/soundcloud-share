@@ -2,7 +2,7 @@
 module.exports = React.createClass({
 
   seekTo: function(e){
-    var container = $(this.refs.progressBar.getDOMNode());
+    var container = $(ReactDOM.findDOMNode(this.refs.progressBar));
     var containerStartX = container.offset().left;
     var percent = (e.clientX - containerStartX) / container.width();
     percent = percent >= 1 ? 1 : percent;

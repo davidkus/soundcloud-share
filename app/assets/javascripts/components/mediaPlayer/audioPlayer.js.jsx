@@ -2,7 +2,7 @@
 module.exports = React.createClass({
 
   audioPlayer: function() {
-    return this.refs.audioObject.getDOMNode();
+    return ReactDOM.findDOMNode(this.refs.audioObject);
   },
 
   componentDidMount: function() {
