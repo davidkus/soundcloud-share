@@ -48,7 +48,7 @@ module.exports = React.createClass({
   render: function() {
     var source = "";
 
-    if (this.props.track) {
+    if (this.props.track && this.props.track.stream_url) {
       source = (<source src={ this.props.track.stream_url + "?client_id=" + this.props.clientId }/>);
     }
 
