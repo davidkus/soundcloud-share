@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  decent_configuration { strategy PunditAuthorizationStrategy }
+  decent_configuration { strategy DecentExposure::StrongParametersStrategy }
 
   set_callback :logging_in_user, :on_login
 

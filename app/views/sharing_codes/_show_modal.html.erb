@@ -1,0 +1,23 @@
+<div id="show-modal" class="ui small modal">
+  <i class="close icon"></i>
+  <div class="header">
+    <%= t('sharing.sharing_code') %>
+  </div>
+  <div class="content">
+    <h4 class="ui horizontal divider header">
+      <%= sharing_code.code %>
+    </h4>
+    <%= render partial: 'common/facebook_share', locals: { url: share_url(sharing_code.code), title: sharing_code.room.name } %>
+    <%= render partial: 'common/twitter_share', locals: { url: share_url(sharing_code.code), title: sharing_code.room.name } %>
+    <%= render partial: 'common/google_plus_share', locals: { url: share_url(sharing_code.code) } %>
+    <div class="ui circular icon button"
+         onClick="window.prompt('<%= t('sharing.clipboard_message') %>', '<%= share_url sharing_code.code %>');">
+      <i class="copy icon"></i>
+    </div>
+  </div>
+  <div class="actions">
+    <div class="ui ok basic button">
+      <%= t('common.ok') %>
+    </div>
+  </div>
+</div>

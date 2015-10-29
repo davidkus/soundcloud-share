@@ -1,0 +1,2 @@
+$("#modal").html("<%= escape_javascript(render partial: 'sharing_codes/index_modal', locals: { codes: accessible_codes } ) %>");
+$('#index-modal').modal('show');

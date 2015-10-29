@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150504184931) do
+ActiveRecord::Schema.define(version: 20151028035721) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,12 +32,24 @@ ActiveRecord::Schema.define(version: 20150504184931) do
     t.string   "name"
     t.boolean  "public",     default: false
     t.boolean  "share_link", default: true
-    t.string   "share_id"
     t.uuid     "sync_id"
     t.uuid     "chat_id"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
+
+  create_table "sharing_codes", force: :cascade do |t|
+    t.string   "code"
+    t.boolean  "expires"
+    t.datetime "expiry_date"
+    t.integer  "room_id"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "sharing_codes", ["room_id"], name: "index_sharing_codes_on_room_id", using: :btree
+  add_index "sharing_codes", ["user_id"], name: "index_sharing_codes_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username",                               null: false

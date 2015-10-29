@@ -7,7 +7,6 @@ RSpec.describe Room, type: :model do
 
     its(:chat_id) { is_expected.not_to be_nil }
     its(:sync_id) { is_expected.not_to be_nil }
-    its(:share_id) { is_expected.not_to be_nil }
   end
 
   describe '#validate' do

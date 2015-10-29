@@ -1,0 +1,49 @@
+<div id="new-modal" class="ui small modal">
+  <i class="close icon"></i>
+  <div class="header">
+    <%= t('sharing.new_sharing_code') %>
+  </div>
+  <div class="content">
+    <%= form_tag room_sharing_codes_path, id: 'new-sharing-form', method: 'post', remote: true, class: 'ui form' do %>
+      <div class="inline field">
+        <div class="ui toggle checkbox">
+          <%= check_box_tag :expires, 1, false %>
+          <%= label_tag :expires %>
+        </div>
+      </div>
+      <div class="inline fields">
+        <%= label_tag :expiry_date, 'Expires In' %>
+        <div class="field">
+          <div class="ui radio checkbox">
+            <%= radio_button_tag :expiry_date, Time.now.advance(hours: +1), checked: true %>
+            <%= label_tag :expiry_date, t('sharing.one_hour') %>
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui radio checkbox">
+            <%= radio_button_tag :expiry_date, Time.now.advance(days: +1) %>
+            <%= label_tag :expiry_date, t('sharing.one_day') %>
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui radio checkbox">
+            <%= radio_button_tag :expiry_date, Time.now.advance(weeks: +1) %>
+            <%= label_tag :expiry_date, t('sharing.one_week') %>
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui radio checkbox">
+            <%= radio_button_tag :expiry_date, Time.now.advance(months: +1) %>
+            <%= label_tag :expiry_date, t('sharing.one_month') %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="actions">
+    <div class="ui ok basic orange icon button" onclick="$('#new-sharing-form').submit();">
+      <i class="plus icon"></i>
+      <%= t('sharing.create_button') %>
+    </div>
+  </div>
+</div>

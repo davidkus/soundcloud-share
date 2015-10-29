@@ -1,0 +1,51 @@
+<div id="index-modal" class="ui modal">
+  <i class="close icon"></i>
+  <div class="header">
+    <%= t('sharing.manage_sharing') %>
+  </div>
+  <div class="content">
+    <div class="ui top attached tabular menu">
+      <a class="active item">
+        <%= t('sharing.codes') %>
+      </a>
+    </div>
+    <div class="ui bottom attached active tab segment">
+      <div class="ui middle aligned divided list">
+        <% codes.each do |code| %>
+        <div class="item">
+          <div class="right floated content">
+            <%= render partial: 'common/facebook_share', locals: { url: share_url(code.code), title: code.room.name } %>
+            <%= render partial: 'common/twitter_share', locals: { url: share_url(code.code), title: code.room.name } %>
+            <%= render partial: 'common/google_plus_share', locals: { url: share_url(code.code) } %>
+            <div class="ui circular icon button"
+                 onClick="window.prompt('<%= t('sharing.clipboard_message') %>', '<%= share_url code.code %>');">
+              <i class="copy icon"></i>
+            </div>
+            <%= link_to room_sharing_code_path(room_id: code.room.id, id: code.id), remote: true, method: :delete, class: "ui basic compact red button" do %>
+                <%= t('sharing.revoke') %>
+            <% end %>
+          </div>
+          <i class="key icon"></i>
+          <div class="content">
+            <div class="header">
+              <%= code.code %>
+            </div>
+            <div class="description">
+              <% if code.expires %>
+                Expires in <%= distance_of_time_in_words Time.now, code.expiry_date %>
+              <% else %>
+                Never expires.
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="actions">
+    <div class="ui ok button">
+      <%= t('sharing.done_button') %>
+    </div>
+  </div>
+</div>

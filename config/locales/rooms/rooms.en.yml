@@ -15,7 +15,6 @@ en:
     public_room: "This room is public"
     private_room: "This room is private"
     no_rooms: "There are no rooms to display."
-    clipboard_message: "Copy to clipboard: Ctrl+C, Enter"
     successfully_created: "Room was successfully created."
     successfully_updated: "Room was successfully updated."
     successfully_destroyed: "Room was successfully destroyed."

@@ -1,0 +1,3 @@
+$("#modal").html("<%= escape_javascript(render partial: 'sharing_codes/new_modal', locals: { sharing_code: sharing_code } ) %>");
+$('#new-modal').modal('show');
+$('.ui.checkbox').checkbox();

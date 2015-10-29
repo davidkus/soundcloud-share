@@ -1,28 +1,16 @@
 <h2 class="ui dividing header"><%= room.name %></h2>
 
+<% if policy(room).update? %>
 <div class="ui blue top right attached label">
   <div class="ui top right pointing click dropdown">
     <i class="share icon"></i> <%= t('rooms.share') %>
     <div class="menu">
-      <div class="header"><%= t('rooms.social_media') %></div>
-      <div class="header">
-        <%= render partial: 'common/facebook_share', locals: { url: room_sharing_url(room, room.share_id), title: room.name } %>
-      </div>
-      <div class="header">
-        <%= render partial: 'common/twitter_share', locals: { url: room_sharing_url(room, room.share_id), title: room.name } %>
-      </div>
-      <div class="header">
-        <%= render partial: 'common/google_plus_share', locals: { url: room_sharing_url(room, room.share_id) } %>
-      </div>
-      <div class="divider"></div>
-      <div class="header"><%= t('rooms.clipboard') %></div>
-      <div class="item"
-           onClick="window.prompt('<%= t('rooms.clipboard_message') %>', '<%= room_sharing_url room, room.share_id %>');">
-        <%= t('rooms.copy_to_clipboard') %>
-      </div>
+      <%= link_to t('sharing.new_sharing_code'), new_room_sharing_code_path(room.id), remote: true, class: 'item' %>
+      <%= link_to t('sharing.manage_sharing'), room_sharing_codes_path(room.id), remote: true, class: 'item' %>
     </div>
   </div>
 </div>
+<% end %>
 
 <div class="ui two column grid">
   <div class="column">
@@ -45,3 +33,5 @@
                     token: @token, userId: current_or_guest_user.id,
                     username: current_or_guest_user.username,
                     avatar: current_or_guest_user.gravatar_url) %>
+
+<div id="modal"></div>

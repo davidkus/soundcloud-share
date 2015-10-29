@@ -27,6 +27,8 @@ class RoomsController < ApplicationController
   # GET /rooms/1
   # GET /rooms/1.json
   def show
+    authorize room
+
     payload = {
       uid: current_or_guest_user.id.to_s,
       userId: current_or_guest_user.id,
@@ -45,16 +47,21 @@ class RoomsController < ApplicationController
 
   # GET /rooms/new
   def new
+    authorize room
+
     room.share_link = true
   end
 
   # GET /rooms/1/edit
   def edit
+    authorize room
   end
 
   # POST /rooms
   # POST /rooms.json
   def create
+    authorize room
+
     respond_to do |format|
       if room.save
         current_or_guest_user.add_role :owner, room
@@ -71,6 +78,8 @@ class RoomsController < ApplicationController
   # PATCH/PUT /rooms/1
   # PATCH/PUT /rooms/1.json
   def update
+    authorize room
+
     respond_to do |format|
       if room.update(room_params)
         format.html { redirect_to room, notice: I18n.t('rooms.successfully_updated') }
@@ -85,6 +94,8 @@ class RoomsController < ApplicationController
   # DELETE /rooms/1
   # DELETE /rooms/1.json
   def destroy
+    authorize room
+
     room.destroy
     respond_to do |format|
       format.html { redirect_to :back, notice: I18n.t('rooms.successfully_destroyed') }
@@ -95,6 +106,6 @@ class RoomsController < ApplicationController
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def room_params
-      params.require(:room).permit :name, :public, :share_link
+      params.require(:room).permit :name, :public
     end
 end

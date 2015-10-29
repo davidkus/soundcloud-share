@@ -8,8 +8,14 @@ class Room < ActiveRecord::Base
   # Validations
   validates :name, presence: true
 
+  has_many :sharing_codes
+
   def owners
     User.with_role :owner, self
+  end
+
+  def users_with_access
+    User.with_role :access, self
   end
 
   def identicon_hash
@@ -26,8 +32,5 @@ class Room < ActiveRecord::Base
   def default_values
     self.sync_id  ||= SecureRandom.uuid
     self.chat_id  ||= SecureRandom.uuid
-
-    # Generate a random 12-digit alphanumeric string
-    self.share_id ||= SecureRandom.random_number(36**12).to_s(36)
   end
 end

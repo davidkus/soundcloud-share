@@ -1,3 +1,16 @@
 en:
   sharing:
-    sharing_disabled: "Sharing is disabled for this room."
+    inavlid_link: "The code you have entered is not valid."
+    successfully_created: "Sharing code successfully created."
+    create_button: "Create"
+    new_sharing_code: "New Code"
+    sharing_code: "Sharing Code"
+    clipboard_message: "Copy to clipboard: Ctrl+C, Enter"
+    one_hour: "One Hour"
+    one_week: "One Week"
+    one_day: "One Day"
+    one_month: "One Month"
+    manage_sharing: "Manage Sharing"
+    codes: "Codes"
+    revoke: "Revoke"
+    done_button: "Done"
