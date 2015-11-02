@@ -1,2 +1,2 @@
 web: bundle exec rails server -p $PORT
-work: bundle exec rake jobs:guests_cleanup
+cleanup: bundle exec rake cleanup:guests && bundle exec rake cleanup:codes

@@ -10,7 +10,6 @@ Demo hosted on Heroku at [soundcloud-demo.kus.dk](http://soundcloud-demo.kus.dk)
 
  - Add a list of public rooms to the homepage.
  - Add a way for owners of rooms to remove access for specific users. 
- - Clean up guest users and expired sharing codes.
  - Add a name generator for guest users that generates readable names.
  - Better error handling when the owner of a room disconnects.
  - Better testing of react components.
