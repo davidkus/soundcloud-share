@@ -32,4 +32,8 @@ class RoomPolicy < ApplicationPolicy
   def destroy?
     user.has_role?(:owner, record)
   end
+
+  def create_public?
+    !user.guest
+  end
 end

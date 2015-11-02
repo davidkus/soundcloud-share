@@ -123,17 +123,28 @@ RSpec.describe RoomsController, type: :controller do
 
   describe 'POST #create' do
 
-    let(:action) { post :create, room: { name: name } }
+    let(:action) { post :create, room: { name: name, public: public } }
 
     context 'when the room is not given a name' do
       let(:name) { nil }
+      let(:public) { false }
 
       it { action; is_expected.to render_template :new }
       it { expect{ action }.not_to change(Room, :count) }
     end
 
+    context 'when a guest user creates a public room' do
+      let(:name) { "Room Name" }
+      let(:public) { true }
+
+      let(:user) { create(:user, guest: true) }
+
+      it { expect{ action }.not_to change(Room, :count) }
+    end
+
     context 'when the room is successfully created' do
       let(:name) { "Room Name" }
+      let(:public) { false }
 
       it { expect{ action }.to change(Room, :count).by 1 }
 
@@ -150,7 +161,9 @@ RSpec.describe RoomsController, type: :controller do
 
   describe 'PUT #update' do
 
-    let(:action) { put :update, id: room.id, room: { name: 'new_name' } }
+    let(:action) { put :update, id: room.id, room: { name: 'new_name', public: public } }
+
+    let(:public) { false }
 
     let(:room) { create(:room, name: 'old_name', public: public?) }
 
@@ -172,6 +185,15 @@ RSpec.describe RoomsController, type: :controller do
       before { room }
 
       it { expect{ action }.not_to change{ Room.find(room.id).name } }
+    end
+
+    context 'when a guest user makes a room public' do
+      let(:public) { true }
+      let(:public?) { false }
+
+      let(:user) { create(:user, guest: true) }
+
+      it { expect{ action }.not_to change(room, :public) }
     end
   end
 

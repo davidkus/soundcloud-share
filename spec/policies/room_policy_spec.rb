@@ -8,6 +8,18 @@ RSpec.describe RoomPolicy, type: :policy do
 
   subject { RoomPolicy.new user, room }
 
+  context 'for a guest user' do
+    let(:user) { create(:user, guest: true) }
+
+    it { is_expected.not_to permit_auth :create_public }
+  end
+
+  context 'for a registered user' do
+    let(:user) { create(:user, guest: false) }
+
+    it { is_expected.to permit_auth :create_public }
+  end
+
   context 'for any user' do
 
     it { is_expected.to permit_auth :index }

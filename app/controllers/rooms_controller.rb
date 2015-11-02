@@ -62,6 +62,10 @@ class RoomsController < ApplicationController
   def create
     authorize room
 
+    if room_params[:public]
+      authorize room, :create_public?
+    end
+
     respond_to do |format|
       if room.save
         current_or_guest_user.add_role :owner, room
@@ -79,6 +83,10 @@ class RoomsController < ApplicationController
   # PATCH/PUT /rooms/1.json
   def update
     authorize room
+
+    if room_params[:public]
+      authorize room, :create_public?
+    end
 
     respond_to do |format|
       if room.update(room_params)
